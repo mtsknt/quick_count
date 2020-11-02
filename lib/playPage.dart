@@ -154,6 +154,8 @@ class _PlayPageState extends State<PlayPage> {
                 fontSize: 32,
               ),
             ),
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () {
               Navigator.pop(context);
             },
@@ -232,21 +234,19 @@ class GameField extends StatelessWidget {
     int index = _count;
     Text txt = _setChar();
 
-    if (txt.data != '') {
-      return SizedBox(
-        width: 52,
-        height: 52,
-        child: FlatButton(
-          child: txt,
-          color: Colors.white,
-          onPressed: () {
-            onGetIndex(_randomIndex[index]);
-          },
-        ),
-      );
-    } else {
-      return SizedBox(width: 52, height: 52, child: null);
-    }
+    return SizedBox(
+      width: 60,
+      height: 60,
+      child: FlatButton(
+        child: txt,
+        color: Colors.white,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: () {
+          onGetIndex(_randomIndex[index]);
+        },
+      ),
+    );
   }
 
   @override

@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _selectedMode = '';
+  String _selectedMode = '1-30';
   User _currentUser = User(name: '');
   List<User> users = [];
   SharedPref sharedPref = SharedPref();
@@ -99,6 +99,8 @@ class _HomePageState extends State<HomePage> {
       child: Text(playMode),
       color: color,
       padding: buttonPadding,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onPressed: () {
         _setSelectedMode(playMode);
         audio.playLocal('select.mp3');
@@ -126,12 +128,20 @@ class _HomePageState extends State<HomePage> {
     );
 
     Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(16),
       child: Center(
         child: Text(
           'Quick\nCountre',
           style: TextStyle(
             fontSize: 32,
+            fontWeight: FontWeight.bold,
+            shadows: [
+              Shadow(
+                blurRadius: 3.0,
+                color: Colors.pink,
+                offset: Offset(0, 0),
+              ),
+            ],
           ),
           textAlign: TextAlign.center,
         ),
@@ -171,6 +181,8 @@ class _HomePageState extends State<HomePage> {
             child: Text('PLAY!'),
             color: Colors.pink[200],
             padding: buttonPadding,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             onPressed: () {
               _playGame(_selectedMode, _currentUser, users);
             },
@@ -183,10 +195,10 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         decoration: BoxDecoration(
           color: Colors.pink[50],
-          // image: DecorationImage(
-          //   image: AssetImage('images/lake.jpg'),
-          //   fit: BoxFit.cover,
-          // ),
+          image: DecorationImage(
+            image: AssetImage('assets/images/kitten.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           children: [
@@ -197,6 +209,25 @@ class _HomePageState extends State<HomePage> {
               selectPlayModeSection,
               playButtonSection,
             ],
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.all(16),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('Font:\nfont name\n'),
+                      Text('Icon:\nxxx xxx\n'),
+                      Text('Special T(C)2020 nxxx xxx'),
+                      Text('(C) 2020 sinProject Inc.'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
