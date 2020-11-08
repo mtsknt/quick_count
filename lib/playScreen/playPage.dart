@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'answers.dart';
-import 'playAudio.dart';
-import 'sharedPref.dart';
-import 'users.dart';
+import '../answers.dart';
+import '../utils/playAudio.dart';
+import '../utils/sharedPref.dart';
+import '../models/users.dart';
 import 'package:flutter/material.dart';
 import 'package:quiver/async.dart';
 
@@ -234,19 +234,26 @@ class GameField extends StatelessWidget {
     int index = _count;
     Text txt = _setChar();
 
-    return SizedBox(
-      width: 60,
-      height: 60,
-      child: FlatButton(
-        child: txt,
-        color: Colors.white,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onPressed: () {
-          onGetIndex(_randomIndex[index]);
-        },
-      ),
-    );
+    if (txt.data != '') {
+      return SizedBox(
+        width: 60,
+        height: 60,
+        child: FlatButton(
+          child: txt,
+          color: Colors.white,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onPressed: () {
+            onGetIndex(_randomIndex[index]);
+          },
+        ),
+      );
+    } else {
+      return SizedBox(
+        width: 60,
+        height: 60,
+      );
+    }
   }
 
   @override

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'playAudio.dart';
-import 'playPage.dart';
-import 'sharedPref.dart';
-import 'users.dart';
+import '../utils/playAudio.dart';
+import '../playScreen/playPage.dart';
+import '../utils/sharedPref.dart';
+import '../models/users.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,8 +58,7 @@ class _HomePageState extends State<HomePage> {
   FutureOr onGoBack(dynamic value) {
     _fetchUserData();
     setState(() {
-      _currentUser = users.firstWhere((user) => user.name == _currentUser.name,
-          orElse: () => null);
+      _currentUser = users.firstWhere((user) => user.name == _currentUser.name);
     });
   }
 
@@ -209,25 +208,6 @@ class _HomePageState extends State<HomePage> {
               selectPlayModeSection,
               playButtonSection,
             ],
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.all(16),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text('Font:\nfont name\n'),
-                      Text('Icon:\nxxx xxx\n'),
-                      Text('Special T(C)2020 nxxx xxx'),
-                      Text('(C) 2020 sinProject Inc.'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
